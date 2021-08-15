@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/general"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LightsActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <Button
+            android:id="@+id/velador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Velador" />
+
+        <Button
+            android:id="@+id/viga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Viga" />
+
+        <Button
+            android:id="@+id/techo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Techo" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:barrierDirection="top" />
+
+        <Button
+            android:id="@+id/offall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Off all" />
+
+        <Button
+            android:id="@+id/onall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="on all" />
+
+        <Button
+            android:id="@+id/volver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
