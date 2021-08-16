@@ -13,15 +13,17 @@ public class BluetoothService {
     private static String FILENAME = "configuration.txt";
     private static SharedPreferences  sharedPreferences;
     private static String defaultBluetooth = "";
+    private static Device device;
 
-    public static void setBluetoothSocket(BluetoothSocket socket ){
-       bluetoothSocket = socket;
+    public static void setDevice(Device newDevice){
+        device = newDevice;
     }
 
-    public static BluetoothSocket  getBluetoothSocket(){
-        return bluetoothSocket;
-    }
 
+    public static BluetoothSocket getBluetoothSocket(){
+        return device.connect();
+
+    }
 
     public static void setPreferences(SharedPreferences preferences) {
         sharedPreferences = preferences;

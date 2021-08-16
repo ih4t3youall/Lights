@@ -5,26 +5,20 @@ import android.view.View;
 
 import java.io.IOException;
 
+import ar.com.sourcesistemas.lights.BluetoothService;
+
 public class MultipleSwitch   implements View.OnClickListener {
 
     private String [] commands;
-    private BluetoothSocket bluetoothSocket;
 
-    public MultipleSwitch(BluetoothSocket bluetoothSocket, String [] commands){
+    public MultipleSwitch(String [] commands){
         this.commands = commands;
-        this.bluetoothSocket =bluetoothSocket;
     }
 
     @Override
     public void onClick(View view) {
 
-        if (!bluetoothSocket.isConnected()) {
-            try {
-                bluetoothSocket.connect();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        BluetoothSocket  bluetoothSocket =  BluetoothService.getBluetoothSocket();
 
         try {
             for (String command : commands){

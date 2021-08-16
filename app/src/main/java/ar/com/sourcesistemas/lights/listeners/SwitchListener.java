@@ -5,27 +5,22 @@ import android.view.View;
 
 import java.io.IOException;
 
+import ar.com.sourcesistemas.lights.BluetoothService;
+
 public class SwitchListener implements View.OnClickListener {
 
     private boolean lastState;
-    private BluetoothSocket bluetoothSocket;
     private String[] commands;
 
-    public SwitchListener(BluetoothSocket bluetoothSocket, String[] commands){
-        this.bluetoothSocket = bluetoothSocket;
+    public SwitchListener(String[] commands){
         this.commands = commands;
     }
 
     @Override
     public void onClick(View view) {
         lastState = !lastState;
-        if (!bluetoothSocket.isConnected()){
-            try {
-                bluetoothSocket.connect();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        BluetoothSocket  bluetoothSocket =  BluetoothService.getBluetoothSocket();
+
         byte[] toSend;
         if (lastState)
             toSend = commands[0].getBytes();

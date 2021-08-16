@@ -13,6 +13,8 @@ public class Device {
     //SPP UUID. Look for it
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
+    private BluetoothSocket bluetoothSocket = null;
+
     public Device(BluetoothDevice btDevice){
         this.btDevice = btDevice;
     }
@@ -27,10 +29,15 @@ public class Device {
 
     public BluetoothSocket  connect() {
 
+        if (bluetoothSocket != null){
+            if (bluetoothSocket.isConnected()){
+                return bluetoothSocket;
+            }
+        }
         try {
-            BluetoothSocket btSocket = btDevice.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
+            bluetoothSocket = btDevice.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
             BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
-            return btSocket;
+            return bluetoothSocket;
 
         } catch (IOException e) {
             e.printStackTrace();

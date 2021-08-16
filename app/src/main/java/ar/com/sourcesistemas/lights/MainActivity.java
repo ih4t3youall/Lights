@@ -46,7 +46,9 @@ public class MainActivity extends AppCompatActivity {
             devices.add(new Device(bluetoothDevice));
             if (bluetoothDevice.getName().equals(bluetoothDeviceName)) {
                 Device device = new Device(bluetoothDevice);
-                BluetoothService.setBluetoothSocket(device.connect());
+
+                BluetoothService.setDevice(device);
+
                 Intent intent = new Intent(MainActivity.this, LightsActivity.class);
                 startActivity(intent);
                 finish();
@@ -61,9 +63,11 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                BluetoothSocket bluetoothSocket = devices.get(position).connect();
-                BluetoothService.setDefaultBluetoothConnection(devices.get(position).getName());
-                BluetoothService.setBluetoothSocket(bluetoothSocket);
+                Device device = devices.get(position);
+
+                BluetoothService.setDefaultBluetoothConnection(device.getName());
+                BluetoothService.setDevice(device);
+
                 Intent intent = new Intent(MainActivity.this, LightsActivity.class);
                 startActivity(intent);
                 finish();

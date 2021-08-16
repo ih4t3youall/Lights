@@ -14,13 +14,11 @@ import ar.com.sourcesistemas.lights.listeners.SwitchListener;
 
 public class LightsActivity extends AppCompatActivity {
 
-    private BluetoothSocket bluetoothSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lights);
-        bluetoothSocket = BluetoothService.getBluetoothSocket();
 
         Button velador = (Button)findViewById(R.id.velador);
         Button viga = (Button)findViewById(R.id.viga);
@@ -31,12 +29,12 @@ public class LightsActivity extends AppCompatActivity {
         Button onAll =  (Button) findViewById(R.id.onall);
 
 
-       velador.setOnClickListener(new SwitchListener(bluetoothSocket, new String[]{"a", "b"}));
-       viga.setOnClickListener(new SwitchListener(bluetoothSocket, new String[]{"g", "h"}));
-       techo.setOnClickListener(new SwitchListener(bluetoothSocket, new String[]{"c", "d"}));
+       velador.setOnClickListener(new SwitchListener( new String[]{"a", "b"}));
+       viga.setOnClickListener(new SwitchListener( new String[]{"g", "h"}));
+       techo.setOnClickListener(new SwitchListener( new String[]{"c", "d"}));
 
-       offAll.setOnClickListener(new MultipleSwitch(bluetoothSocket,new String[]{"a","c","e","g"}));
-       onAll.setOnClickListener(new MultipleSwitch(bluetoothSocket,new String[]{"b","d","f","h"}));
+       offAll.setOnClickListener(new MultipleSwitch(new String[]{"a","c","e","g"}));
+       onAll.setOnClickListener(new MultipleSwitch(new String[]{"b","d","f","h"}));
 
 
        volver.setOnClickListener(new View.OnClickListener() {
