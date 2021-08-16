@@ -1,6 +1,5 @@
 package ar.com.sourcesistemas.lights.listeners;
 
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.view.View;
 
@@ -9,20 +8,17 @@ import java.io.IOException;
 public class SwitchListener implements View.OnClickListener {
 
     private boolean lastState;
-    private BluetoothDevice bluetoothDevice;
+    private BluetoothSocket bluetoothSocket;
     private String[] commands;
 
-    public SwitchListener(BluetoothDevice bluetoothDevice, String[] commands){
-        this.bluetoothDevice = bluetoothDevice;
+    public SwitchListener(BluetoothSocket bluetoothSocket, String[] commands){
+        this.bluetoothSocket = bluetoothSocket;
         this.commands = commands;
     }
 
     @Override
     public void onClick(View view) {
         lastState = !lastState;
-
-        bluetoothDevice.get
-
         if (!bluetoothSocket.isConnected()){
             try {
                 bluetoothSocket.connect();

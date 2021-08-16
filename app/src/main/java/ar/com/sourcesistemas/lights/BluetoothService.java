@@ -1,6 +1,5 @@
 package ar.com.sourcesistemas.lights;
 
-import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,17 +9,17 @@ import java.io.FileOutputStream;
 
 public class BluetoothService {
 
-    private static BluetoothDevice bluetoothDevice;
+    private static BluetoothSocket bluetoothSocket;
     private static String FILENAME = "configuration.txt";
     private static SharedPreferences  sharedPreferences;
     private static String defaultBluetooth = "";
 
-    public static void setBluetoothDevice(BluetoothDevice device ){
-        bluetoothDevice = device;
+    public static void setBluetoothSocket(BluetoothSocket socket ){
+       bluetoothSocket = socket;
     }
 
-    public static BluetoothDevice  getBluetoothDevice(){
-        return bluetoothDevice;
+    public static BluetoothSocket  getBluetoothSocket(){
+        return bluetoothSocket;
     }
 
 

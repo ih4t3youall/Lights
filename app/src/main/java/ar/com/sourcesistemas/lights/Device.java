@@ -26,6 +26,7 @@ public class Device {
     }
 
     public BluetoothSocket  connect() {
+
         try {
             BluetoothSocket btSocket = btDevice.createInsecureRfcommSocketToServiceRecord(myUUID);//create a RFCOMM (SPP) connection
             BluetoothAdapter.getDefaultAdapter().cancelDiscovery();
